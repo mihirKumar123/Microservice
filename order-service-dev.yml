@@ -1,18 +1,16 @@
 spring:
-  application:
-    name: order-service
-  profiles:
-    active: dev
-  cloud:
-    config:
-      uri: http://localhost:8888
+  # Config server integration (Spring Boot 3+ style)
+  config:
+    import: optional:configserver:http://localhost:8888
 
+  # MySQL datasource
   datasource:
     url: jdbc:mysql://localhost:3306/microdb
     username: root
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  # JPA/Hibernate
   jpa:
     hibernate:
       ddl-auto: update
@@ -34,4 +32,5 @@ zipkin:
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %5p [${spring.application.name},%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+
 
