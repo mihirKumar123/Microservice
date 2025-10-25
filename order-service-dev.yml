@@ -1,7 +1,4 @@
-spring:
-  # Config server integration (Spring Boot 3+ style)
-  config:
-    import: optional:configserver:http://localhost:8888
+
 
   # MySQL datasource
   datasource:
@@ -32,5 +29,6 @@ zipkin:
 logging:
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %5p [${spring.application.name},%X{traceId:-},%X{spanId:-}] %logger{36} - %msg%n"
+
 
 
